@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <!-- Fuente de Material Symbols para íconos -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <title>Sidebar Menu</title>
+</head>
+<body>
+  <!-- Componente principal del menú lateral -->
+  <aside class="sidebar">
+    <!-- Formulario para controlar la apertura y cierre del menú con un checkbox -->
+  <form class="sidebar__form">
+     <!-- Checkbox oculto que actúa como estado del menú (abierto o cerrado) -->
+    <input type="checkbox" id="open-menu">
+    <!-- Etiqueta que cierra el menú al hacer clic (ícono de "close") -->
+    <label class="material-symbols-outlined" for="open-menu">close</label>
+    <label class="material-symbols-outlined open-button" 
+for="open-menu">menu_open</label>
+  </form>
+  <!-- Contenedor para el logo del menú lateral -->
+    <picture class="sidebar__picture">
+      <!-- Imagen del logo -->
+      <img src="img/logito.png">
+    </picture>
+    <!-- Navegación principal del menú lateral -->
+  <nav class="sidebar__nav">
+    <ul><!-- Primer elemento del menú: Notificaciones -->
+      <li class="sidebar__item">
+        <span class="material-symbols-outlined">
+        Notifications</span>
+        <!-- Enlace correspondiente -->
+        <a href="#">Notifications</a>
+      </li>
+
+      <li  class="sidebar__item">
+        <span 
+      class="material-symbols-outlined">
+        Mail</span>
+        <a href="#">Message</a>
+      </li>
+
+      <li  class="sidebar__item">
+        <span 
+      class="material-symbols-outlined">
+        shopping_cart</span>
+        <a href="#">Cart</a>
+      </li>
+
+      <li  class="sidebar__item">
+        <span 
+      class="material-symbols-outlined">
+        account_balance</span>
+        <a href="#">Balance</a>
+      </li>
+
+      <li  class="sidebar__item">
+        <span 
+      class="material-symbols-outlined">
+        Settings</span>
+        <a href="#">Settings</a>
+      </li>
+    </ul>
+  </nav>
+   <!-- Sección del perfil del usuario dentro del menú lateral -->
+    <div class="sidebar__profile">
+      <ul>
+        <!-- Opción de perfil del usuario -->
+          <li  class="sidebar__item item--profile">
+            <!-- Imagen del perfil -->
+            <img src="img/gojito.png" >
+            <span class="profile-option">PROFILE</span>
+          </li>
+          <!-- Opción de cerrar sesión -->
+          <li  class="sidebar__item">
+            <span 
+          class="material-symbols-outlined">
+            logout</span>
+            <a href="#">Log out</a>
+          </li>
+      </ul>
+    </div>
+  
+  </aside>
+</body>
+</html>

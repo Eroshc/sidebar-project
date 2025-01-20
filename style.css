@@ -1,0 +1,216 @@
+*{
+  box-sizing: border-box;
+}
+/* Eliminación de márgenes y rellenos por defecto */
+body, ul, div, li,a , h1, h2,h3{
+  margin: 0;
+  padding: 0;
+}
+/* Evita la selección de texto en etiquetas y spans */
+label,span{
+  user-select: none;
+}
+/* Variables CSS para colores y fondo */
+body{
+  --bg-color: color-mix(in srgb, #f62 70%, #fff );
+  --sidebar-color:#fff;
+  --dark-color: #f62;
+  --text-color: #353434;
+  background-color: var(--bg-color);
+}
+
+/*Sidebar Styles*/
+
+.sidebar{
+  background-color: var(--sidebar-color);
+  position:fixed;/* Fija el sidebar en la pantalla */
+  height: 100dvh;/* Altura dinámica en dispositivos */
+  width: clamp(220px,20vw,300px);/* Ancho adaptable */
+  font-size: clamp(1rem,2.2vw,3rem);/* Tamaño de fuente dinámico */
+  display: flex;/* Usa flexbox para estructurar los elementos dentro del sidebar */
+  flex-direction: column;/* Coloca los elementos en una columna */
+  justify-content: space-between;/* Distribuye el espacio entre los elementos */
+  padding: 30px 0 30px 6px;
+
+}
+/* Navegación dentro del sidebar */
+.sidebar__nav{
+  flex: 1;
+  display: flex;
+}
+.sidebar__nav ul{
+  display: flex;/* Alinea los elementos de la lista en una columna */
+  flex-direction: column;/* Coloca los elementos de la lista verticalmente */
+  justify-content: center;/* Centra los elementos */
+  width: 100%;/* Ocupa todo el ancho disponible */
+
+}
+/* Estilos de los elementos de navegación */
+.sidebar__item{
+  list-style: none;/* Elimina los puntos de la lista */
+  display: flex;/* Usa flexbox para alinear los elementos de cada item */
+  align-items: center;/* Alinea el contenido verticalmente */
+  text-transform: uppercase;/* Convierte el texto a mayúsculas */
+  font-size: .9rem;
+  padding-right: 6px;
+  color: var(--dark-color);
+  border-radius: 36px 0 0 36px;
+  position: relative;/* Necesario para los pseudo-elementos ::before y ::after */
+}
+.sidebar__item span {
+  padding: 12px;
+  font-size: 2rem;
+  
+}
+.sidebar__item:hover{
+  background-color: var(--bg-color);
+  color: var(--sidebar-color);
+}
+.sidebar__item a{
+  color: inherit;
+  text-decoration: none;/* Elimina el subrayado de los enlaces */
+
+}
+.sidebar__item::before,
+.sidebar__item::after{
+  content:'' ;/* Crea un espacio vacío para los elementos */
+  background-color: var(--bg-color);
+  position: absolute;/* Los posiciona de manera absoluta dentro del item */
+  right: 0;/* Los coloca a la derecha del item */
+  width: 18px;
+  height: 18px;
+  background-color: transparent;
+}
+/* Efecto de animación al pasar el mouse sobre el item */
+.sidebar__item:hover::before{
+  top: -18px;
+  border-bottom-right-radius: 25px ;
+  box-shadow: 4px 4px 0 4px var(--bg-color);
+
+}
+/* Efecto de animación en la parte inferior al pasar el mouse sobre el item */
+.sidebar__item:hover::after{
+  bottom: -18px;
+  border-top-right-radius: 25px ;
+  box-shadow: 4px -4px 0 4px var(--bg-color);
+}
+/*SIDEBAR PICTURE STYLES*/
+.sidebar__picture{
+  margin-left: 1.5rem;
+  position: relative;/* Permite que el logo se posicione en relación al sidebar */
+  z-index: 10;/* Asegura que el logo esté por encima de otros elementos */
+}
+.sidebar__picture img{
+  width:clamp(4rem,75%,20rem);
+  margin: 0;
+  opacity: .82;
+  filter: hue-rotate(-22deg);/* Aplica un filtro de rotación de matiz para cambiar los colores */
+}
+/*SIDEBAR PROFILE MENU STYLES*/
+.sidebar__profile img{
+  border-radius: 50%;/* Hace que la imagen del perfil sea redonda */
+  width: 2rem;
+}
+
+.item--profile .profile-option{
+  font-size: .8rem;
+  padding: 0 12px 0 9px;
+  color: inherit;
+
+}
+/* Estilos para el item del perfil en el sidebar */
+.item--profile{
+  width: fit-content;/* Ajusta el tamaño del item según su contenido */
+  margin: 12px;
+  color:var(--text-color);
+}
+.item--profile:hover{
+  
+  border-radius: 25px;
+  color: var(--sidebar-color);
+}
+.item--profile:hover img{
+  opacity: .7;
+}
+.item--profile::before,.item--profile::after{
+  display: none;/* No se muestran los pseudo-elementos en el perfil */
+}
+/*SIDEBAR FORM STYLES*/
+input[type="checkbox"]{
+  display: none;/* Oculta el checkbox que controla el menú */
+}
+.sidebar__form{
+  position: absolute;/* Posiciona el formulario de manera absoluta */
+  z-index: 20;/* Asegura que el formulario esté por encima de otros elementos */
+  right: -1rem;  /* Coloca el formulario a la derecha */
+
+}
+.sidebar__form .open-button{
+  display: none; /* Oculta el botón de abrir el menú */
+}
+.sidebar label{
+  position: relative;/* Posiciona el botón de forma relativa */
+  color: var(--sidebar-color);
+  background-color: var(--bg-color);
+  font-size: 2rem;
+  border-radius: 50%;
+  padding: .4rem;
+  user-select: none;/* Evita la selección de texto en el botón */
+}
+.sidebar label::before,
+.sidebar label::after{
+  content: '';/* Crea un pseudo-elemento vacío */
+  background-color: var(--bg-color);
+  position: absolute;
+  width: 13px;
+  height: 25px;
+  background-color: transparent;
+}
+.sidebar label::before{
+  top: -25px;/* Mueve el pseudo-elemento hacia arriba */
+  left: 19px;
+  border-bottom-right-radius: 25px;
+  box-shadow: 4px 4px 0 4px var(--bg-color);
+}
+.sidebar label::after{
+  bottom: -25px;
+  left: 19px;
+  border-top-right-radius: 25px;
+  box-shadow: 4px -4px 0 4px var(--bg-color);
+}
+input[type="checkbox"]:checked ~ label{
+  color: var(--bg-color);
+  background-color: var(--sidebar-color);
+}
+input[type="checkbox"]:checked ~ label::before,
+input[type="checkbox"]:checked ~ label::after{
+  display: none; 
+}
+
+.sidebar:has(input[type="checkbox"]:checked){
+  width: fit-content;
+}
+.sidebar:has(input[type="checkbox"]:checked) .sidebar__picture img{
+  max-width:3.4rem ;
+}
+.sidebar:has(input[type="checkbox"]:checked) .sidebar__form label{
+  display: none;
+}
+.sidebar:has(input[type="checkbox"]:checked) .sidebar__form .open-button{
+  display: block;/* Muestra el botón de apertura */
+}
+/* Estilo para ajustar la posición y tamaño del formulario cuando el checkbox está marcado */
+.sidebar:has(input[type="checkbox"]:checked) .sidebar__form{
+  top: 4.3rem;
+  width: fit-content;/* Ajusta el ancho al contenido */
+}
+.sidebar:has(input[type="checkbox"]:checked) .sidebar__picture{
+  margin-left: 0;
+}
+.sidebar:has(input[type="checkbox"]:checked) picture{
+  width: fit-content;/* El ancho se ajusta al contenido */
+  margin-left:.75rem ;
+}
+.sidebar:has(input[type="checkbox"]:checked) :is(.sidebar__item a, .profile-option){
+  display: none; /* Los enlaces de los items y el perfil se ocultan */
+}
